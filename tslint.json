@@ -1,6 +1,8 @@
 {
   "extends": "tslint:recommended",
   "rules": {
+    "arrow-parens": false,
+    "member-access": false,
     "no-console": false,
     "quotemark": [
       true,

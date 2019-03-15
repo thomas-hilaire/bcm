@@ -6,12 +6,21 @@
   "scripts": {
     "build": "rm -rf build; tsc --project tsconfig.json",
     "dev": "ts-node src/app.ts",
-    "lint": "tslint --project tslint.json"
+    "lint": "tslint --project tslint.json",
+    "test": "mocha -r ts-node/register --check-leaks 'src/**/*.spec.ts'"
   },
   "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/koa": "^2.0.48",
+    "@types/mocha": "^5.2.6",
     "@types/node": "^11.11.3",
+    "chai": "^4.2.0",
+    "mocha": "^6.0.2",
     "ts-node": "^8.0.3",
     "tslint": "^5.14.0",
     "typescript": "^3.3.3333"
+  },
+  "dependencies": {
+    "koa": "^2.7.0"
   }
 }
