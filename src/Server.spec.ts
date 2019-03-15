@@ -1,6 +1,7 @@
 import {expect} from 'chai';
 import {get} from 'http';
 import {Server} from './Server';
+import {Service} from './Service';
 
 const TEST_PORT = 18080;
 const SERVER_URL = `http://localhost:${TEST_PORT}`;
@@ -10,7 +11,7 @@ describe('Server', () => {
   let server: Server;
 
   before(() => {
-    server = new Server();
+    server = new Server(new Service());
     return server.start(TEST_PORT);
   });
 

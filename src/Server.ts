@@ -1,6 +1,8 @@
 import * as http from 'http';
 import * as Koa from 'koa';
+import ApiRouter from './ApiRouter';
 import {requestLogging} from './middleware/requestLogging';
+import {Service} from './Service';
 
 const SERVER_PORT = 8080;
 
@@ -9,9 +11,10 @@ export class Server {
   private readonly koa: Koa;
   private server: http.Server;
 
-  constructor() {
+  constructor(service: Service) {
     this.koa = new Koa();
     this.koa.use(requestLogging);
+    this.koa.use(new ApiRouter(service).routes());
   }
 
   start(port = SERVER_PORT): Promise<number> {

@@ -1,7 +1,9 @@
 {
   "extends": "tslint:recommended",
   "rules": {
+    "array-type": false,
     "arrow-parens": false,
+    "interface-name": false,
     "member-access": false,
     "no-console": false,
     "quotemark": [
