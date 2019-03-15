@@ -1,0 +1,17 @@
+{
+  "name": "bcm",
+  "version": "1.0.0",
+  "main": "build/app.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "rm -rf build; tsc --project tsconfig.json",
+    "dev": "ts-node src/app.ts",
+    "lint": "tslint --project tslint.json"
+  },
+  "devDependencies": {
+    "@types/node": "^11.11.3",
+    "ts-node": "^8.0.3",
+    "tslint": "^5.14.0",
+    "typescript": "^3.3.3333"
+  }
+}
