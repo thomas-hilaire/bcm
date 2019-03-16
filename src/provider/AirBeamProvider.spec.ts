@@ -1,8 +1,19 @@
 import {expect} from 'chai';
 import * as nock from 'nock';
-import AirBeamProvider from './AirBeamProvider';
+import {SinonFakeTimers, useFakeTimers} from 'sinon';
+import AirBeamProvider, {MAX_WAIT_MS} from './AirBeamProvider';
 
 describe('AirBeam Flight Provider', () => {
+
+    let clock: SinonFakeTimers;
+
+    beforeEach(() => {
+        clock = useFakeTimers(new Date());
+    });
+
+    afterEach(() => {
+        clock.restore();
+    });
 
     it('should return nothing when no results from the api', async () => {
         const scope = nock('https://my.api.mockaroo.com', {
@@ -46,6 +57,20 @@ describe('AirBeam Flight Provider', () => {
             departure_time: '2:03 PM',
             arrival_time: '11:00 AM',
         }]);
+    });
+
+    it('should return nothing when error 502 from the api', async () => {
+        const longResponseDelayMs = MAX_WAIT_MS * 2;
+        nock('https://my.api.mockaroo.com')
+            .get('/air-beam/flights')
+            .delay(longResponseDelayMs)
+            .reply(502);
+
+        const flightsPromise = new AirBeamProvider().flights();
+
+        clock.tick(MAX_WAIT_MS);
+
+        expect(await flightsPromise).to.deep.equal([]);
     });
 
 });
