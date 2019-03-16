@@ -54,4 +54,15 @@ describe('AirJazz Flight Provider', () => {
         }]);
     });
 
+    it('should return nothing when error 502 from the api', async () => {
+        const scope = nock('https://my.api.mockaroo.com')
+            .get('/air-jazz/flights')
+            .reply(502);
+
+        const flights = await new AirJazzProvider().flights();
+
+        expect(scope.isDone()).to.be.true;
+        expect(flights).to.deep.equal([]);
+    });
+
 });

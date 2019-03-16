@@ -14,12 +14,17 @@ interface JazzFlight {
 
 export default class AirJazzProvider implements FlightProvider {
     async flights(): Promise<Array<Flight>> {
-        const flights = (await axios.get(ENDPOINT, HEADERS)).data as Array<JazzFlight>;
-        return flights.map(flight => ({
-            provider: 'AIR_JAZZ' as Provider,
-            price: flight.price,
-            departure_time: flight.dtime,
-            arrival_time: flight.atime,
-        }));
+        try {
+            const reply = await axios.get(ENDPOINT, HEADERS);
+            const flights = reply.data as Array<JazzFlight>;
+            return flights.map(flight => ({
+                provider: 'AIR_JAZZ' as Provider,
+                price: flight.price,
+                departure_time: flight.dtime,
+                arrival_time: flight.atime,
+            }));
+        } catch (error) {
+            return [];
+        }
     }
 }
