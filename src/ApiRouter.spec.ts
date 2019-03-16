@@ -14,9 +14,9 @@ describe('/api route', () => {
     let server: Server;
 
     before(async () => {
-        service = {
-            fetchFlights: stub(),
-        };
+        service = {} as Service;
+        service.fetchFlights = stub();
+
         server = new Server(service);
 
         await server.start(TEST_PORT);

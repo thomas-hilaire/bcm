@@ -11,7 +11,7 @@ describe('Server', () => {
   let server: Server;
 
   before(() => {
-    server = new Server(new Service());
+    server = new Server(new Service([]));
     return server.start(TEST_PORT);
   });
 
