@@ -1,6 +1,6 @@
 import {Context} from 'koa';
 import * as Router from 'koa-router';
-import {Service} from './Service';
+import {Service} from '../Service';
 
 export default class ApiRouter {
 

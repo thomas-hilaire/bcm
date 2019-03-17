@@ -2,7 +2,7 @@ import axios from 'axios';
 import {expect} from 'chai';
 import {SinonStub, stub} from 'sinon';
 import {Server} from './Server';
-import {Service} from './Service';
+import {Service} from '../Service';
 
 const TEST_PORT = 18080;
 const HOST = 'localhost';

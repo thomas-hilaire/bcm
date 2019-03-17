@@ -1,7 +1,7 @@
 import AirBeamProvider from './provider/AirBeamProvider';
 import AirJazzProvider from './provider/AirJazzProvider';
 import AirMoonProvider from './provider/AirMoonProvider';
-import {Server} from './Server';
+import {Server} from './http/Server';
 import {Service} from './Service';
 
 const providers = [

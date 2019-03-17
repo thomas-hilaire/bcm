@@ -1,8 +1,8 @@
 import * as http from 'http';
 import * as Koa from 'koa';
 import ApiRouter from './ApiRouter';
-import {requestLogging} from './middleware/requestLogging';
-import {Service} from './Service';
+import {requestLogging} from '../middleware/requestLogging';
+import {Service} from '../Service';
 
 const SERVER_PORT = 8080;
 
